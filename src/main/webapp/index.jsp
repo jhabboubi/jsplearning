@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII" %>
+    <%@ page errorPage="error.jsp" %>
+    <%@ page import="java.util.*" %>
+    <%@ page import="java.io.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
@@ -10,6 +13,11 @@
     <title>JSP</title>
 </head>
 <body>
+
+<jsp:include page="header.jsp" />
+<%@ include file="header.jsp" %>
+
+
 <%-- Declaration --%>
 <%! int counter = 0;
         void incrementCounter(){
@@ -21,16 +29,22 @@
 <!-- i can see you -->
 <%-- Scriptlets --%>
 <%
-    String example = "5 + 20 = ";
+    String example = "5 / 0 = ";
     out.print(example);
-    int i = 5;
-    int j = 20;
-    int sum = i+j;
+    double i = 5;
+    double j = 0;
+    if(j==0){
+    throw new Exception("Exception!");
+    }
+    double sum = i/j;
     out.print(sum);
 %>
 
 <h1>You have seen some java code above</h1>
-<%= new java.util.Date() %>
+<jsp:useBean id = "bmw" class="org.perschoals.Car" scope="session" />
+<%= new Date() %>
+<jsp:setProperty name="bmw" property="name" value="bmw car" />
+<jsp:getProperty name="bmw" property="name" />
 
 <p>
 This page has been visited
