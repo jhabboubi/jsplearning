@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp" />
+<!-- <jsp:include page="header.jsp" /> -->
 <%@ include file="header.jsp" %>
 
 
@@ -29,10 +29,10 @@
 <!-- i can see you -->
 <%-- Scriptlets --%>
 <%
-    String example = "5 / 0 = ";
+    String example = "5 / 10 = ";
     out.print(example);
     double i = 5;
-    double j = 0;
+    double j = 10;
     if(j==0){
     throw new Exception("Exception!");
     }
@@ -42,7 +42,12 @@
 
 <h1>You have seen some java code above</h1>
 <jsp:useBean id = "bmw" class="org.perschoals.Car" scope="session" />
-<%= new Date() %>
+
+
+
+<h1 style="color: blue;"><i><%= new Date() %></i></h1>
+
+
 <jsp:setProperty name="bmw" property="name" value="bmw car" />
 <jsp:getProperty name="bmw" property="name" />
 
